@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "402880727332",
+    "firebase_url": "https://cards-vocabulary.firebaseio.com",
+    "project_id": "cards-vocabulary",
+    "storage_bucket": "cards-vocabulary.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:402880727332:android:5113525512db92d73acbb1",
+        "android_client_info": {
+          "package_name": "com.cobanogluhasan.inguplift"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "402880727332-59562a4b8o0haontnk1m5g6lsvjgd06u.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBcnOUHCk3Brbto9TgTi-Ne09SQFjsWi2U"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "402880727332-59562a4b8o0haontnk1m5g6lsvjgd06u.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

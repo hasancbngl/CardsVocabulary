@@ -1,0 +1,40 @@
+<resources>
+    <string name="app_name">Cards Vocabulary</string>
+    <string name="g_n">Gün</string>
+    <string name="ba_la">Başla!!</string>
+    <string name="tekrar_et">Tekrar Et!!</string>
+    <string name="day">Day</string>
+    <string name="_0_0">0/0</string>
+    <string name="start">Start!!</string>
+    <string name="repeat">REPEAT!!</string>
+    <string name="change_the_language">Change the language</string>
+    <string name="language">Language</string>
+    <string name="english">English</string>
+    <string name="turkish">Turkish</string>
+    <string name="licenses">Licenses</string>
+    <string name="discretescrollview">DiscreteScrollView</string>
+    <string name="yarolegovich">yarolegovich</string>
+    <string name="copyright_2017_yaroslav_shevchuk">Copyright 2017 Yaroslav Shevchuk</string>
+    <string name="the_mit_license">The MIT License</string>
+    <string name="_1_4_9">1.4.9</string>
+    <string name="shtooka_net">shtooka.net/</string>
+    <string name="attribution_4_0_international_cc_by_4_0">Attribution 4.0 International (CC BY 4.0)</string>
+    <string name="pronunciations">Pronunciations</string>
+    <string name="todo">TODO</string>
+    <string name="textview">TextView</string>
+    <string name="the_word">The Word</string>
+    <string name="synonym">Synonym</string>
+    <string name="Icon">icon</string>
+    <string name="icon_by_freepik_from">Icon by freepik from</string>
+    <string name="flaticon">flaticon</string>
+
+    <string name="admob_app_id"> ca-app-pub-6921015378294794~3832315170</string>
+
+
+
+    <string name="banner_id">ca-app-pub-6921015378294794/3389639651</string>
+
+    <string name="interstitial_id">ca-app-pub-6921015378294794/1501842916</string>
+
+
+</resources>

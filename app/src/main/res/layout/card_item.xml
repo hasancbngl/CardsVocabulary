@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="@dimen/dp250"
+    android:layout_height="@dimen/dp350"
+    android:layout_gravity="center"
+    app:layout_gravity="center"
+    android:layout_marginTop="@dimen/dp35"
+    android:layout_marginBottom="@dimen/dp40"
+    app:cardCornerRadius="@dimen/dp8"
+    app:cardElevation="@dimen/dp3">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#F6B0B0">
+
+        <ImageView
+            android:id="@+id/imageview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="0dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="0dp"
+            android:contentDescription="@string/todo"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="0dp" />
+
+        <TextView
+            android:id="@+id/textview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="@dimen/dp20"
+            android:gravity="center"
+            android:textColor="#100F0F"
+            android:textSize="@dimen/sp20"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/word"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/dp55"
+            android:gravity="center"
+            android:textColor="#0B0A0A"
+            android:textSize="@dimen/sp20"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/tickImageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="@dimen/dp20"
+            app:srcCompat="@drawable/volume"
+            android:contentDescription="@string/todo"
+            android:layout_marginEnd="@dimen/dp20" />
+
+        <View
+            android:id="@+id/divider"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp1"
+            android:layout_below="@id/word"
+            android:background="?android:attr/listDivider" />
+
+        <View
+            android:id="@+id/divider2"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp1"
+            android:layout_alignBottom="@id/textview"
+            android:background="?android:attr/listDivider" />
+
+
+    </RelativeLayout>
+
+
+
+</androidx.cardview.widget.CardView>

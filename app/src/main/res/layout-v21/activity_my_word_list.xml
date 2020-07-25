@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:ads="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+android:id="@+id/coordinatorLayout"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+tools:context=".MyWordListActivity">
+
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/vocabularyListRecycler"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="@dimen/dp4"
+        android:scrollbars="vertical" />
+
+
+</RelativeLayout>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/floatingActionButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end|bottom"
+        android:layout_marginRight="@dimen/dp25"
+        android:layout_marginBottom="@dimen/dp55"
+        android:elevation="@dimen/dp6"
+        android:src="@drawable/ic_add"
+        android:background="@color/colorAccent"
+        app:fabSize="normal"
+        app:layout_behavior="com.google.android.material.behavior.HideBottomViewOnScrollBehavior"
+        app:maxImageSize="@dimen/dp35"
+        android:layout_marginEnd="@dimen/dp25" />
+
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+    <com.google.android.gms.ads.AdView
+        android:id="@+id/adView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerInParent="true"
+        ads:adSize="BANNER"
+        ads:adUnitId="@string/banner_id"
+        />
+
+</RelativeLayout>
