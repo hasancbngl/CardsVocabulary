@@ -1,6 +1,7 @@
 package com.cobanogluhasan.inguplift;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
@@ -8,6 +9,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.AssetManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.speech.tts.TextToSpeech;
 import android.util.Log;
@@ -16,6 +18,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.cobanogluhasan.inguplift.Adapter.CardAdapter;
@@ -39,7 +42,7 @@ import java.util.Random;
 
 public class LearnWordsActivity extends AppCompatActivity implements TextToSpeech.OnInitListener {
 
-
+    private static final String TAG = "LearnWordsActivity";
     private SwipeCardsView swipeCardsView1;
     private List<Model> modelList = new ArrayList<>();
     ArrayList<String> dictionary;
@@ -55,6 +58,8 @@ public class LearnWordsActivity extends AppCompatActivity implements TextToSpeec
     Random random;
     String url="";
     TextView currentnoTextview;
+
+
 
     TextToSpeech textToSpeech;
     SharedPreferences sharedPreferences;
@@ -73,7 +78,8 @@ public class LearnWordsActivity extends AppCompatActivity implements TextToSpeec
         loadBanner(this);
 
 
-      sharedPreferences = this.getSharedPreferences("com.cobanogluhasan.inguplift", Context.MODE_PRIVATE);
+
+        sharedPreferences = this.getSharedPreferences("com.cobanogluhasan.inguplift", Context.MODE_PRIVATE);
 
          startButton = (Button) findViewById(R.id.startSynonymButton);
          dayTextView = (TextView) findViewById(R.id.dayTextView);
@@ -108,30 +114,7 @@ public class LearnWordsActivity extends AppCompatActivity implements TextToSpeec
             @Override
             public void onShow(int index) {
                 currentnoTextview.setText(String.valueOf(index+1) + "/10");
-
-
-
-                try {
-
-                    keep=dictionary.get(numberOfWords[index]);
-                    url="http://packs.shtooka.net/eng-wcp-us/mp3/En-us-"+ dictionary.get(numberOfWords[index])+ ".mp3";
-                    PlayAudioManager.playAudio(getApplicationContext(), url, new MediaPlayerListener() {
-                        @Override
-                        public void onErrorListener(boolean isError) {
-                            if(isError){
-
-                                textToSpeech.speak(keep, TextToSpeech.QUEUE_ADD, null);
-                            }
-
-                        }
-                    });
-
-                } catch (Exception e) {
-
-                    e.printStackTrace();
-
-
-                }
+                keep=dictionary.get(numberOfWords[index]);
 
 
             }
@@ -173,18 +156,18 @@ public class LearnWordsActivity extends AppCompatActivity implements TextToSpeec
 
             }
 
+            @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
             @Override
             public void onItemClick(View cardImageView, int index) {
 
-               // String keep=dictionary.get(numberOfWords[index]);
 
                 try {
-                    url="http://packs.shtooka.net/eng-wcp-us/mp3/En-us-"+ dictionary.get(numberOfWords[index])+ ".mp3";
 
+                    keep=dictionary.get(numberOfWords[index]);
+                    url="http://packs.shtooka.net/eng-wcp-us/mp3/En-us-"+ keep+ ".mp3";
                     PlayAudioManager.playAudio(getApplicationContext(), url, new MediaPlayerListener() {
                         @Override
                         public void onErrorListener(boolean isError) {
-
                             if(isError){
 
                                 textToSpeech.speak(keep, TextToSpeech.QUEUE_ADD, null);
@@ -193,11 +176,10 @@ public class LearnWordsActivity extends AppCompatActivity implements TextToSpeec
                         }
                     });
 
-
                 } catch (Exception e) {
+
                     e.printStackTrace();
 
-                 //   textToSpeech.speak(keep, TextToSpeech.QUEUE_ADD, null);
 
                 }
 
@@ -236,6 +218,7 @@ public class LearnWordsActivity extends AppCompatActivity implements TextToSpeec
     }
 
 
+
     public void startClicked(View view) {
         swipeCardsView1.enableSwipe(true);
         startButton.setVisibility(View.INVISIBLE);
@@ -268,12 +251,16 @@ public class LearnWordsActivity extends AppCompatActivity implements TextToSpeec
 
             for (int i = 0; i < 10; i++) {
                 random = new Random();
-                number = random.nextInt(1001);
+
+                try {
+                    number = random.nextInt(998);
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    number = random.nextInt(998);
+                }
                 numberOfWords[i] = number;
-
-
                 modelList.add((new Model(dictionary.get(number), "a", definition.get(number))));
-
 
             }
 
@@ -281,7 +268,6 @@ public class LearnWordsActivity extends AppCompatActivity implements TextToSpeec
 
         else if (valueForRepeat==true)  {
             for (int i = 0; i < 10; i++) {
-
 
                 modelList.add((new Model(dictionary.get(numberOfWords[i]), "a", definition.get(numberOfWords[i]))));
 

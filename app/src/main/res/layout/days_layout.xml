@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="@dimen/dp70"
     android:padding="@dimen/dp10"
-    android:background="@drawable/background2">
+    android:background="@drawable/gradient_6">
 
     <TextView
         android:id="@+id/days"
@@ -13,7 +13,7 @@
         android:layout_marginHorizontal="@dimen/dp20"
         android:layout_marginTop="@dimen/dp10"
         android:text="day"
-        android:textColor="#000"
+        android:textColor="#090808"
         android:textSize="@dimen/sp20"
         android:textStyle="bold" />
 

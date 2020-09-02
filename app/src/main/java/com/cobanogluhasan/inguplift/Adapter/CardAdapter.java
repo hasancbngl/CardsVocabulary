@@ -1,10 +1,13 @@
 package com.cobanogluhasan.inguplift.Adapter;
 
 import android.content.Context;
+import android.media.Image;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.cobanogluhasan.inguplift.DatabaseHelper;
 import com.cobanogluhasan.inguplift.Model.Model;
 import com.cobanogluhasan.inguplift.R;
 import com.huxq17.swipecardsview.BaseCardAdapter;
@@ -16,6 +19,7 @@ public class CardAdapter extends BaseCardAdapter {
 
     private List<Model> modelList;
     private Context context;
+    private DatabaseHelper databaseHelper;
 
     public CardAdapter(List<Model> modelList, Context context) {
 
@@ -47,16 +51,26 @@ public class CardAdapter extends BaseCardAdapter {
             return;
         }
 
+        databaseHelper = new DatabaseHelper(context);
+
         ImageView imageView = (ImageView) cardview.findViewById(R.id.imageview);
+        ImageButton addToListButton = (ImageButton) cardview.findViewById(R.id.addToListButton);
 
         TextView textView = (TextView) cardview.findViewById(R.id.textview);
         TextView word = (TextView)  cardview.findViewById(R.id.word);
 
-        Model model = modelList.get(position);
+        final Model model = modelList.get(position);
         word.setText(model.getTitle());
 
         textView.setText(model.getWord());
         Picasso.with(context).load(model.getImage()).into(imageView);
+
+        addToListButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                databaseHelper.addData(model.getTitle(), "",model.getWord(),"");
+            }
+        });
 
 
 

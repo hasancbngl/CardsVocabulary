@@ -5,7 +5,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LearnWordsActivity">
+    tools:context=".LearnWordsActivity"
+    android:padding="@dimen/dp6"
+    android:orientation="vertical">
 
 
     <com.huxq17.swipecardsview.SwipeCardsView
@@ -41,10 +43,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:backgroundTint="#8D9CF4"
         android:onClick="startClicked"
         android:text="Start!!"
-        android:textColor="#F80505"
         android:textSize="@dimen/sp25" tools:targetApi="lollipop"/>
 
 
@@ -55,10 +55,8 @@
         android:layout_below="@id/startSynonymButton"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="@dimen/dp25"
-        android:backgroundTint="#8D9CF4"
         android:onClick="repeatClicked"
         android:text="REPEAT!!"
-        android:textColor="#F80505"
         android:textSize="@dimen/sp25"
         android:visibility="invisible" tools:targetApi="lollipop"/>
 

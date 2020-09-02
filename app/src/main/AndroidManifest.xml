@@ -4,7 +4,6 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
 
-
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -12,34 +11,71 @@
         android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
-        <activity android:name=".MySettings"
-            android:parentActivityName=".MainActivity"></activity>
-        <activity android:name=".MyWordListActivity"
-            android:parentActivityName=".MainActivity"/>
-        <activity android:name=".DaysActivity"
-            android:parentActivityName=".MainActivity"/>
-        <activity android:name=".SynonymActivity"
-            android:parentActivityName=".MainActivity"/>
-        <activity android:name=".VocabularyListActivity"
-            android:parentActivityName=".MyWordListActivity"/>
-        <activity android:name=".KelimeOgrenActivity"
-            android:parentActivityName=".MainActivity"/>
-        <activity android:name=".LearnWordsActivity"
-            android:parentActivityName=".MainActivity"/>
-        <activity android:name=".MainActivity"  >
-
+        <activity android:name=".GuessTheWordActivity"></activity>
+        <activity android:name=".MainQuizActivity" />
+        <activity
+            android:name=".SplashActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".aboutActivity"
+            android:parentActivityName=".MainActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".UpdateActivity"
+            android:parentActivityName=".MainActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".MySettings"
+            android:parentActivityName=".MainActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".MyWordListActivity"
+            android:parentActivityName=".MainActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".DaysActivity"
+            android:parentActivityName=".MainActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".SynonymActivity"
+            android:parentActivityName=".MainActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".VocabularyListActivity"
+            android:parentActivityName=".MyWordListActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".KelimeOgrenActivity"
+            android:parentActivityName=".MainActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".LearnWordsActivity"
+            android:parentActivityName=".MainActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ResultActivity"
+            android:parentActivityName=".MainActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".QuizActivityEn"
+            android:parentActivityName=".MainActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".MainActivity"
+            android:screenOrientation="portrait" />
 
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
-            android:value="ca-app-pub-6921015378294794~3832315170"/>
-
+            android:value="ca-app-pub-6921015378294794~3832315170" />
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
     </application>
 
 </manifest>

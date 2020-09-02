@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item android:title="Settings &amp; About"
-        android:id="@+id/settings"></item>
+    <item android:title="@string/settings_amp_about"
+        android:id="@+id/settings"/>
+
+    <item android:title="@string/share"
+        android:id="@+id/share"/>
+
+    <item android:title="@string/aboutTheApp"
+        android:id="@+id/aboutMyApp"/>
+
 </menu>

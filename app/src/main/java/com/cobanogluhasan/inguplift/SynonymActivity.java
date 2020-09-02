@@ -2,15 +2,18 @@ package com.cobanogluhasan.inguplift;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.res.AssetManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.speech.tts.TextToSpeech;
 import android.util.Log;
+import android.view.View;
 import android.webkit.URLUtil;
 import android.widget.Toast;
 
@@ -110,8 +113,8 @@ public class SynonymActivity extends AppCompatActivity implements TextToSpeech.O
                 .setPivotY(Pivot.Y.BOTTOM) // CENTER is a default one
                 .build());
 
-
         scrollView.addScrollStateChangeListener(new DiscreteScrollView.ScrollStateChangeListener<RecyclerView.ViewHolder>() {
+            @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
             @Override
             public void onScrollStart(@NonNull RecyclerView.ViewHolder viewHolder, int i) {
                  i = wrapper.getRealCurrentPosition();
@@ -208,15 +211,24 @@ public class SynonymActivity extends AppCompatActivity implements TextToSpeech.O
 
 
         int i=0;
-        while (i<248) {
-            if(i/10+1==clickedNumber[1]) {
-                synonymList.add(synonym.get(i));
-               if(i!=0) { synonymExampleList.add(synonymExample.get(2*i) + "\n\n" + synonymExample.get(2*i+1)); }
-               else synonymExampleList.add(synonymExample.get(0) + "\n\n" + synonymExample.get(1));
-            }
-            i++;
-        }
 
+        try {
+
+
+            while (i < 248) {
+                if (i / 10 + 1 == clickedNumber[1]) {
+                    synonymList.add(synonym.get(i));
+                    if (i != 0) {
+                        synonymExampleList.add(synonymExample.get(2 * i) + "\n\n" + synonymExample.get(2 * i + 1));
+                    } else
+                        synonymExampleList.add(synonymExample.get(0) + "\n\n" + synonymExample.get(1));
+                }
+                i++;
+            }
+        }catch (Exception e)
+        {
+            Log.i(TAG, "textGet: Exception:" + e);
+        }
 
 
     }

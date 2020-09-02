@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/quizLinear"
+    android:background="@drawable/gradient_list"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainQuizActivity"
+    android:padding="@dimen/dp10"
+    android:orientation="vertical">
+
+    <Button
+        style="@style/Widget.MaterialComponents.FloatingActionButton"
+        android:id="@+id/quizButtonTr"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center"
+        android:layout_marginHorizontal="@dimen/dp50"
+        android:layout_marginTop="@dimen/dp120"
+        android:padding="@dimen/dp10"
+        android:text="Find The Translation tr"
+        android:textAllCaps="false"
+        android:textColor="#FFFFFF"
+      android:backgroundTint="#DC3333"
+        android:textSize="@dimen/sp20" />
+
+    <Button
+        style="@style/Widget.MaterialComponents.FloatingActionButton"
+        android:id="@+id/quizButtonEn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginHorizontal="@dimen/dp50"
+        android:layout_marginTop="@dimen/dp20"
+        android:padding="@dimen/dp10"
+        android:text="Find The Definition"
+        android:textAllCaps="false"
+        android:textColor="#000"
+        android:backgroundTint="#DF6407"
+        android:textSize="@dimen/sp20" />
+
+    <Button
+        style="@style/Widget.MaterialComponents.FloatingActionButton"
+        android:id="@+id/guessTheWord"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginHorizontal="@dimen/dp50"
+        android:layout_marginTop="@dimen/dp20"
+        android:padding="@dimen/dp10"
+        android:text="Guess The Word"
+        android:textAllCaps="false"
+        android:textColor="#000"
+        android:backgroundTint="#3AE665"
+        android:textSize="@dimen/sp20" />
+
+
+
+
+
+</LinearLayout>

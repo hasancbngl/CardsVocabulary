@@ -29,7 +29,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         String createTable = "CREATE TABLE " + TABLE_NAME + " (ID INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 " WORD TEXT, SYNONYM TEXT, DEFINITION TEXT, EXAMPLE TEXT)";
 
-
         database.execSQL(createTable);
 
     }
@@ -37,6 +36,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     @Override
     public void onUpgrade(SQLiteDatabase database, int oldVersion, int newVersion) {
         database.execSQL(" CREATE TABLE IF NOT EXISTS " + TABLE_NAME);
+        onCreate(database);
 
     }
 
@@ -76,6 +76,22 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         database.execSQL(query);
     }
+
+
+    public void updateData(String  id, String word, String synonym, String definition, String example ){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+
+       // contentValues.put(COL1, id);
+        contentValues.put(COL2, word);
+        contentValues.put(COL3, synonym);
+        contentValues.put(COL4, definition);
+        contentValues.put(COL5, example);
+
+        db.update(TABLE_NAME, contentValues, "ID = ?", new String[] {id});
+    }
+
+    
 
 
 

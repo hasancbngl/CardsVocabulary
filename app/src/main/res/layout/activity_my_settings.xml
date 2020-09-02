@@ -5,8 +5,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#257A6B6B"
-    tools:context=".MySettings">
+    android:background="@drawable/gradient_5"
+    tools:context=".MySettings"
+    android:orientation="vertical">
 
     <TextView
         android:id="@+id/textView"
@@ -38,7 +39,7 @@
         android:layout_marginHorizontal="@dimen/dp48"
         android:layout_marginTop="@dimen/dp8"
         android:text="@string/change_the_language"
-        android:textColor="#0E0000"
+        android:textColor="#000"
         android:textColorLink="#FFFFFF" />
 
 
@@ -50,32 +51,35 @@
         android:layout_below="@id/info"
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
-        android:layout_marginLeft="@dimen/dp42"
+        android:layout_marginLeft="@dimen/dp55"
         android:layout_marginTop="@dimen/dp8"
         android:background="#FFFFFF"
         android:onClick="langEnglishClick"
         android:text="@string/english"
         app:backgroundTint="#FFFFFF"
-        android:layout_marginStart="@dimen/dp42" />
+        android:layout_marginStart="@dimen/dp55" />
 
     <Button
         android:id="@+id/trrButton"
         style="@style/Widget.MaterialComponents.Button.OutlinedButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/enButton"
-        android:layout_marginLeft="@dimen/dp42"
+        android:layout_toRightOf="@id/enButton"
+       android:layout_marginLeft="@dimen/dp55"
+        android:layout_marginStart="@dimen/dp55"
+        android:layout_below="@id/info"
+        android:layout_marginTop="@dimen/dp8"
         android:background="#EFE5E5"
         android:onClick="langTurkishClick"
         android:text="@string/turkish"
         app:backgroundTint="#FFFFFF"
-        android:layout_marginStart="@dimen/dp42" />
+        android:layout_toEndOf="@id/enButton" />
 
     <View
         android:id="@+id/divider7"
         android:layout_width="match_parent"
         android:layout_height="@dimen/dp1"
-        android:layout_below="@id/trrButton"
+        android:layout_below="@id/enButton"
         android:background="?android:attr/listDivider" />
 
     <TextView
@@ -84,7 +88,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/divider7"
         android:layout_marginLeft="@dimen/dp15"
-        android:layout_marginTop="@dimen/dp8"
+        android:layout_marginTop="@dimen/dp6"
         android:text="@string/licenses"
         android:textColor="#F60707"
         android:textColorLink="#FFFFFF"
@@ -102,7 +106,7 @@
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/dp100"
+        android:layout_height="@dimen/dp80"
         android:layout_below="@id/divider8"
         android:layout_marginHorizontal="@dimen/dp10"
         android:layout_marginTop="@dimen/dp8"
@@ -184,7 +188,7 @@
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView2"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/dp80"
+        android:layout_height="@dimen/dp70"
         android:layout_below="@id/cardView"
         android:layout_marginHorizontal="@dimen/dp10"
         android:layout_marginTop="@dimen/dp8"
@@ -290,6 +294,46 @@
     </androidx.cardview.widget.CardView>
 
 
+    <Button
+        android:id="@+id/rateMeButton"
+        style="@style/Widget.MaterialComponents.FloatingActionButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/cardView3"
+        android:layout_marginTop="@dimen/dp8"
+        android:layout_marginLeft="@dimen/dp25"
+        android:layout_marginStart="@dimen/dp25"
+        android:textSize="@dimen/sp20"
+        android:text="@string/rateus"
+        />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView4"
+        android:layout_width="@dimen/dp55"
+        android:layout_height="@dimen/dp55"
+        android:layout_below="@id/cardView3"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="@dimen/dp8"
+        android:layout_marginEnd="@dimen/dp40"
+        android:onClick="emailClicked"
+        android:layout_marginRight="@dimen/dp40"
+        app:cardBackgroundColor="#FFFFFF">
+
+        <ImageButton
+            android:id="@+id/imageButton"
+            android:layout_gravity="center"
+            android:onClick="emailClicked"
+            android:layout_width="@dimen/dp50"
+            android:layout_height="@dimen/dp50"
+            android:contentDescription="@string/todo"
+            android:src="@drawable/ic_email" />
+
+
+    </androidx.cardview.widget.CardView>
+
+
+
     <com.google.android.gms.ads.AdView
         android:id="@+id/adView"
         android:layout_width="wrap_content"
@@ -299,8 +343,6 @@
         ads:adSize="BANNER"
         ads:adUnitId="@string/banner_id"
         />
-
-
 
 
 </RelativeLayout>

@@ -33,7 +33,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
-            android:layout_marginBottom="@dimen/dp20"
+            android:layout_marginBottom="@dimen/dp50"
             android:gravity="center"
             android:textColor="#100F0F"
             android:textSize="@dimen/sp20"
@@ -62,6 +62,20 @@
             app:srcCompat="@drawable/volume"
             android:contentDescription="@string/todo"
             android:layout_marginEnd="@dimen/dp20" />
+
+        <ImageButton
+            android:id="@+id/addToListButton"
+            android:layout_width="@dimen/dp40"
+            android:layout_height="@dimen/dp40"
+            android:layout_alignParentRight="true"
+            android:onClick="addToList"
+            android:layout_below="@id/divider2"
+            android:layout_marginHorizontal="@dimen/dp6"
+            android:layout_marginBottom="@dimen/dp4"
+            android:textSize="@dimen/sp18"
+            android:background="@drawable/ic_box"
+            android:visibility="visible"
+            android:contentDescription="TODO" />
 
         <View
             android:id="@+id/divider"

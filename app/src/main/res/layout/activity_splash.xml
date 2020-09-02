@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#fece2f"
+    tools:context=".MainActivity"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/imageViewCard"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/dp230"
+        android:layout_centerHorizontal="true"
+        android:layout_marginHorizontal="@dimen/dp20"
+        android:layout_marginTop="@dimen/dp80"
+        android:src="@drawable/ic_cards" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/imageViewCard"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/dp40"
+        android:fontFamily="@font/bangers"
+        android:gravity="center_horizontal"
+        android:text="Cards Vocabulary"
+        android:textAlignment="center"
+        android:textSize="@dimen/sp40" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textView2"
+        android:layout_centerHorizontal="true"
+        android:gravity="bottom"
+        android:text="English Learning App"
+        android:textSize="@dimen/sp18" />
+
+
+</RelativeLayout>
