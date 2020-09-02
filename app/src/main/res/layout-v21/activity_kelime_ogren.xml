@@ -5,7 +5,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".KelimeOgrenActivity">
+    tools:context=".KelimeOgrenActivity"
+    android:padding="@dimen/dp6"
+    android:orientation="vertical">
 
 
     <com.huxq17.swipecardsview.SwipeCardsView
@@ -41,11 +43,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:backgroundTint="#8D9CF4"
         android:tag="0"
         android:onClick="baslatClicked"
         android:text="@string/ba_la"
-        android:textColor="#F80505"
         android:textSize="@dimen/sp25" />
 
 
@@ -56,13 +56,12 @@
         android:layout_below="@id/baslatButton"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="@dimen/dp25"
-        android:backgroundTint="#8D9CF4"
         android:onClick="tekrarClicked"
         android:tag="1"
         android:text="@string/tekrar_et"
-        android:textColor="#F80505"
         android:textSize="@dimen/sp25"
         android:visibility="invisible" />
+
 
     <TextView
         android:id="@+id/textView5"

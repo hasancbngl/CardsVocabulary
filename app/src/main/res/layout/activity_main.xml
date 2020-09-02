@@ -1,14 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:ads="http://schemas.android.com/apk/res-auto"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    xmlns:ads="http://schemas.android.com/apk/res-auto"
     android:id="@+id/firstMenuRelativeL"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background"
+    android:background="@drawable/gradient_list"
+    android:orientation="vertical"
+    android:visibility="visible"
     tools:context=".MainActivity"
     tools:visibility="visible">
+
 
     <TextView
         android:id="@+id/selectTextView"
@@ -16,17 +19,19 @@
         android:layout_height="wrap_content"
         android:layout_above="@id/trButton"
         android:layout_centerInParent="true"
-        android:text="Select The Language"
+        android:text="@string/select_the_language"
         android:textColor="#F8F5F5"
         android:textSize="@dimen/sp24"
         android:visibility="visible" />
 
     <Button
         android:id="@+id/trButton"
+        style="@style/Widget.MaterialComponents.FloatingActionButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_above="@id/engButton"
         android:layout_centerInParent="true"
+        android:layout_marginStart="@dimen/dp100"
         android:layout_marginLeft="@dimen/dp100"
         android:backgroundTint="#7803B3"
         android:onClick="turkishClicked"
@@ -34,10 +39,11 @@
         android:textColor="#FFFFFF"
         android:textSize="@dimen/sp24"
         android:visibility="visible"
-        style="@style/Widget.MaterialComponents.FloatingActionButton"/>
+        tools:targetApi="lollipop" />
 
     <Button
         android:id="@+id/engButton"
+        style="@style/Widget.MaterialComponents.FloatingActionButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
@@ -46,8 +52,7 @@
         android:onClick="englishClicked"
         android:text="English"
         android:textSize="@dimen/sp24"
-        android:visibility="visible"
-        style="@style/Widget.MaterialComponents.FloatingActionButton"/>
+        android:visibility="visible" />
 
     <RelativeLayout
         android:id="@+id/menuRelativeLayoutEn"
@@ -57,9 +62,10 @@
 
         <Button
             android:id="@+id/learnWordsButton"
+            style="@style/Widget.MaterialComponents.FloatingActionButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_above="@+id/synonymButton"
+            android:layout_above="@+id/quizButton1"
             android:layout_centerInParent="true"
             android:layout_marginLeft="@dimen/dp100"
             android:layout_marginBottom="@dimen/dp20"
@@ -67,11 +73,11 @@
             android:onClick="learnWordsClicked"
             android:text="Everyday 10 words "
             android:textSize="@dimen/sp24"
-            android:visibility="visible"
-            style="@style/Widget.MaterialComponents.FloatingActionButton"/>
+            android:visibility="visible" />
 
         <Button
             android:id="@+id/synonymButton"
+            style="@style/Widget.MaterialComponents.FloatingActionButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
@@ -81,23 +87,38 @@
             android:text="Learn Synonym Words"
             android:textColor="#050303"
             android:textSize="@dimen/sp24"
-            android:visibility="visible"
-            style="@style/Widget.MaterialComponents.FloatingActionButton"/>
+            android:visibility="visible" />
+
+        <Button
+            android:id="@id/quizButton1"
+            style="@style/Widget.MaterialComponents.FloatingActionButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@id/synonymButton"
+            android:layout_centerInParent="true"
+            android:layout_marginStart="@dimen/dp80"
+            android:layout_marginLeft="@dimen/dp80"
+            android:layout_marginBottom="@dimen/dp20"
+            android:onClick="quizClicked"
+            android:text="Quiz"
+            android:textSize="@dimen/sp24"
+            android:visibility="visible" />
 
         <Button
             android:id="@+id/myWordList"
+            style="@style/Widget.MaterialComponents.FloatingActionButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/synonymButton"
             android:layout_centerInParent="true"
+            android:layout_marginStart="@dimen/dp80"
             android:layout_marginLeft="@dimen/dp80"
             android:layout_marginTop="@dimen/dp20"
             android:background="#909EF1"
             android:onClick="myWordListClicked"
             android:text="My Word List"
             android:textSize="@dimen/sp24"
-            android:visibility="visible"
-            style="@style/Widget.MaterialComponents.FloatingActionButton"/>
+            android:visibility="visible" />
 
 
     </RelativeLayout>
@@ -110,35 +131,51 @@
 
         <Button
             android:id="@+id/kelimeOgrenButton"
+            style="@style/Widget.MaterialComponents.FloatingActionButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_above="@id/esAnlamliButton"
+            android:layout_above="@id/quizButton2"
             android:layout_centerInParent="true"
+            android:layout_marginStart="@dimen/dp100"
             android:layout_marginLeft="@dimen/dp100"
             android:layout_marginBottom="@dimen/dp20"
             android:backgroundTint="#04D55A"
             android:onClick="kelimeOgrenClicked"
-            android:text="Her gün 10 kelime"
+            android:text="@string/her_g_n_10_kelime"
             android:textSize="@dimen/sp24"
-            android:visibility="visible"
-            style="@style/Widget.MaterialComponents.FloatingActionButton"/>
+            android:visibility="visible" />
+
+        <Button
+            android:id="@+id/quizButton2"
+            style="@style/Widget.MaterialComponents.FloatingActionButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@id/esAnlamliButton"
+            android:layout_centerInParent="true"
+            android:layout_marginStart="@dimen/dp80"
+            android:layout_marginLeft="@dimen/dp80"
+            android:layout_marginBottom="@dimen/dp20"
+            android:onClick="quizClicked"
+            android:text="@string/quiz"
+            android:textSize="@dimen/sp24" />
 
         <Button
             android:id="@+id/esAnlamliButton"
+            style="@style/Widget.MaterialComponents.FloatingActionButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:layout_marginLeft="@dimen/dp90"
             android:backgroundTint="#DF6306"
             android:onClick="synonymClicked"
-            android:text="Eş Anlamlı Kelimeler"
+            android:text="@string/e_anlaml_kelimeler"
             android:textColor="#050303"
             android:textSize="@dimen/sp24"
-            android:visibility="visible"
-            style="@style/Widget.MaterialComponents.FloatingActionButton"/>
+            android:visibility="visible" />
 
         <Button
             android:id="@+id/kelimeListem"
+            style="@style/Widget.MaterialComponents.FloatingActionButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/esAnlamliButton"
@@ -149,8 +186,7 @@
             android:onClick="myWordListClicked"
             android:text="Kelime Listem"
             android:textSize="@dimen/sp24"
-            android:visibility="visible"
-            style="@style/Widget.MaterialComponents.FloatingActionButton"/>
+            android:visibility="visible" />
 
     </RelativeLayout>
 
@@ -161,9 +197,7 @@
         android:layout_alignParentBottom="true"
         android:layout_centerInParent="true"
         ads:adSize="BANNER"
-        ads:adUnitId="@string/banner_id"
-        />
-
+        ads:adUnitId="@string/banner_id" />
 
 
 </RelativeLayout>

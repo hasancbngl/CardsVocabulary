@@ -7,10 +7,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.res.AssetManager;
+import android.graphics.drawable.AnimationDrawable;
 import android.os.Build;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -20,23 +19,14 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 
-import com.cobanogluhasan.inguplift.AdmobAds.AdmobAds;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
-import com.google.android.gms.ads.InterstitialAd;
 import com.google.android.gms.ads.MobileAds;
-import com.google.android.gms.ads.initialization.InitializationStatus;
-import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
 
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.Random;
+import hotchemi.android.rate.AppRate;
 
 @RequiresApi(api = Build.VERSION_CODES.O)
-public class MainActivity extends AppCompatActivity  {
+public class MainActivity extends AppCompatActivity {
 
     TextView selectTextview;
     Button trButton;
@@ -48,10 +38,10 @@ public class MainActivity extends AppCompatActivity  {
     RelativeLayout menuRelativeLayoutTr;
     Button kelimeOgrenButton;
     Button esAnlamliButton;
-
     SharedPreferences langPreferences;
     String defaultLang="";
 
+    RelativeLayout firstMenuRelativeLayout;
 
     public boolean onCreateOptionsMenu(Menu menu) {
 
@@ -71,6 +61,25 @@ public class MainActivity extends AppCompatActivity  {
             case R.id.settings:
                 Intent intent = new Intent(this, MySettings.class);
                 startActivity(intent);
+                return true;
+            case R.id.share:
+                Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
+                sharingIntent.setType("text/plain");
+                String  shareBody= getString(R.string.content);
+                String url="https://play.google.com/store/apps/details?id=com.cobanogluhasan.inguplift";
+                String app="Cards Vocabulary";
+
+                sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, app);
+                sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, shareBody + "\n\n\n" +url);
+
+                startActivity(Intent.createChooser(sharingIntent,  getString(R.string.sharevia)));
+
+                return true;
+            case R.id.aboutMyApp:
+                Intent aboutIntent = new Intent(this, aboutActivity.class);
+
+                startActivity(aboutIntent);
+
                 return true;
             default:
                 return false;
@@ -93,7 +102,6 @@ public class MainActivity extends AppCompatActivity  {
         menuRelativeLayoutEn.setVisibility(View.INVISIBLE);
 
 
-
     }
 
     public void englishClicked(View view) {
@@ -112,6 +120,15 @@ public class MainActivity extends AppCompatActivity  {
 
 
     }
+
+    public void quizClicked(View view) {
+
+        Intent quizIntent =new Intent(getApplicationContext(), MainQuizActivity.class);
+        startActivity(quizIntent);
+
+
+    }
+
 
     public void learnWordsClicked(View view) {
 
@@ -147,13 +164,11 @@ public class MainActivity extends AppCompatActivity  {
 
     }
 
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
 
         langPreferences=this.getSharedPreferences("com.cobanogluhasan.inguplift", Context.MODE_PRIVATE);
 
@@ -170,6 +185,11 @@ public class MainActivity extends AppCompatActivity  {
 
         kelimeOgrenButton= (Button) findViewById(R.id.kelimeOgrenButton);
         esAnlamliButton = (Button) findViewById(R.id.esAnlamliButton);
+
+        firstMenuRelativeLayout = findViewById(R.id.firstMenuRelativeL);
+
+        animatedGradient();
+
 
 
       defaultLang=langPreferences.getString("language", "");
@@ -203,6 +223,39 @@ public class MainActivity extends AppCompatActivity  {
 
      loadBanner(this);
 
+        rateMyApp();
+
+
+    }
+
+    private void animatedGradient() {
+
+        AnimationDrawable animationDrawable = (AnimationDrawable) firstMenuRelativeLayout.getBackground();
+        animationDrawable.setEnterFadeDuration(2000); //Animated background
+        animationDrawable.setExitFadeDuration(4000);
+
+        animationDrawable.start();
+
+
+
+
+    }
+
+    private void rateMyApp() {
+        //rate the app dialog
+
+        AppRate.with(this)
+                .setInstallDays(1) // default 10, 0 means install day.
+                .setLaunchTimes(2) // default 10
+                .setRemindInterval(1) // default 1
+                .monitor();
+
+        AppRate.showRateDialogIfMeetsConditions(this);
+
+
+
+
+
 
     }
 
@@ -216,6 +269,8 @@ public class MainActivity extends AppCompatActivity  {
         mAdview.loadAd(adRequest);
 
     }
+
+
 
 
 

@@ -1,15 +1,18 @@
 package com.cobanogluhasan.inguplift;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.res.AssetManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.speech.tts.TextToSpeech;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.cobanogluhasan.inguplift.Adapter.CardAdapter;
@@ -36,7 +39,7 @@ import java.util.Random;
 
 public class KelimeOgrenActivity extends AppCompatActivity implements TextToSpeech.OnInitListener {
 
-
+    private static final String TAG = "KelimeOgrenActivity";
     private SwipeCardsView swipeCardsView;
     private List<Model> modelList = new ArrayList<>();
     ArrayList<String> dictionary;
@@ -54,6 +57,7 @@ public class KelimeOgrenActivity extends AppCompatActivity implements TextToSpee
     String url="";
     TextView guncelnoTextview;
     private String keep = "";
+
 
 
     TextToSpeech textToSpeech;
@@ -92,6 +96,8 @@ public class KelimeOgrenActivity extends AppCompatActivity implements TextToSpee
         sayac=sharedPreferences2.getInt("gun", sayac);
 
 
+
+
         loadBanner(this);
 
 
@@ -104,35 +110,13 @@ public class KelimeOgrenActivity extends AppCompatActivity implements TextToSpee
 
         swipeCardsView.setCardsSlideListener(new SwipeCardsView.CardsSlideListener() {
 
+
             @Override
             public void onShow(int index) {
+                keep=dictionary.get(numberOfWords[index]);
                 guncelnoTextview.setText(String.valueOf(index+1) + "/10");
 
 
-
-                try {
-                    url="http://packs.shtooka.net/eng-wcp-us/mp3/En-us-"+ dictionary.get(numberOfWords[index])+ ".mp3";
-
-                     keep=dictionary.get(numberOfWords[index]);
-
-                    PlayAudioManager.playAudio(getApplicationContext(), url, new MediaPlayerListener() {
-                        @Override
-                        public void onErrorListener(boolean isError) {
-
-                           if(isError){
-
-                               textToSpeech.speak(keep, TextToSpeech.QUEUE_ADD, null);
-                           }
-                        }
-                    });
-
-
-                } catch (Exception e) {
-
-
-                    e.printStackTrace();
-
-                }
 
 
             }
@@ -177,23 +161,22 @@ public class KelimeOgrenActivity extends AppCompatActivity implements TextToSpee
 
             }
 
+            @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
             @Override
             public void onItemClick(View cardImageView, int index) {
-
 
 
                 try {
 
                     url="http://packs.shtooka.net/eng-wcp-us/mp3/En-us-"+ dictionary.get(numberOfWords[index])+ ".mp3";
-
                     PlayAudioManager.playAudio(getApplicationContext(), url, new MediaPlayerListener() {
                         @Override
                         public void onErrorListener(boolean isError) {
-
                             if(isError){
 
                                 textToSpeech.speak(keep, TextToSpeech.QUEUE_ADD, null);
                             }
+
                         }
                     });
 
@@ -201,7 +184,7 @@ public class KelimeOgrenActivity extends AppCompatActivity implements TextToSpee
 
                     e.printStackTrace();
 
-                    
+
                 }
 
 
@@ -246,21 +229,29 @@ public class KelimeOgrenActivity extends AppCompatActivity implements TextToSpee
 
 
 
+
     private void getDay() {
 
         newWordEn();
         newWordTr();
 
+        random = new Random();
+
         if (valueForRepeat==false) {
 
             for (int i = 0; i < 10; i++) {
-                random = new Random();
-                number = random.nextInt(1001);
+
+                try {
+                    number = random.nextInt(998);
+
+                }
+                catch (Exception e) {
+                    e.printStackTrace();
+                    number = random.nextInt(998);
+                }
+
                 numberOfWords[i] = number;
-
-
                 modelList.add((new Model(dictionary.get(number), "a", translation.get(number))));
-
 
             }
 
@@ -269,10 +260,7 @@ public class KelimeOgrenActivity extends AppCompatActivity implements TextToSpee
         else if (valueForRepeat==true)  {
             for (int i = 0; i < 10; i++) {
 
-
-                modelList.add((new Model(dictionary.get(numberOfWords[i]), "a", translation.get(numberOfWords[i]))));
-
-
+                    modelList.add((new Model(dictionary.get(numberOfWords[i]), "a", translation.get(numberOfWords[i]))));
 
             }
 

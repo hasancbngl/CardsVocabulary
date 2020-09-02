@@ -33,8 +33,6 @@ public class DaysActivity extends AppCompatActivity {
         langPreferences=this.getSharedPreferences("com.cobanogluhasan.inguplift", Context.MODE_PRIVATE);
 
 
-        loadBanner(this);
-
 
 
     initDayList();
@@ -91,15 +89,6 @@ public class DaysActivity extends AppCompatActivity {
 
 
 
-    public void loadBanner(Context context) {
-        //noinspection deprecation
-        MobileAds.initialize(context, context.getResources().getString(R.string.admob_app_id));
-
-        AdView mAdview = (AdView) findViewById(R.id.adView);
-        AdRequest adRequest = new AdRequest.Builder().build();
-        mAdview.loadAd(adRequest);
-
-    }
 
 
 

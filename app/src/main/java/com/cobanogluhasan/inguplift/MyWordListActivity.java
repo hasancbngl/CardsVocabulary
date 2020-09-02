@@ -14,11 +14,15 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Toast;
 
 import com.cobanogluhasan.inguplift.Adapter.VocabularyListAdapter;
+import com.cobanogluhasan.inguplift.Helper.MyButtonClickListener;
+import com.cobanogluhasan.inguplift.Helper.SwipeHelper;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.MobileAds;
@@ -26,9 +30,12 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class MyWordListActivity extends AppCompatActivity {
 
+
+    private static final String TAG = "MyWordListActivity";
 
     private ArrayList<Word> wordList = new ArrayList<>();
     FloatingActionButton floatingActionButton;
@@ -51,17 +58,16 @@ public class MyWordListActivity extends AppCompatActivity {
         loadBanner(this);
 
 
-        langPreferences=this.getSharedPreferences("com.cobanogluhasan.inguplift", Context.MODE_PRIVATE);
+        langPreferences = this.getSharedPreferences("com.cobanogluhasan.inguplift", Context.MODE_PRIVATE);
 
         String defaultLang = langPreferences.getString("language", "");
 
 
-        if(defaultLang.equals("turkish")) {
+        if (defaultLang.equals("turkish")) {
 
             getSupportActionBar().setTitle("Kelime Listem");
 
-        }
-        else {
+        } else {
             getSupportActionBar().setTitle("My Word List");
         }
 
@@ -69,13 +75,11 @@ public class MyWordListActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 
-
-
         mDatabaseHelper = new DatabaseHelper(this);
         coordinatorLayout = (CoordinatorLayout) findViewById(R.id.coordinatorLayout);
         floatingActionButton = (FloatingActionButton) findViewById(R.id.floatingActionButton);
 
-         initRecyclerView();
+        initRecyclerView();
 
 
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
@@ -104,22 +108,22 @@ public class MyWordListActivity extends AppCompatActivity {
             mWord.setSynonym(data.getString(2));
             mWord.setDefinition(data.getString(3));
             mWord.setExample(data.getString(4));
-            wordList.add(mWord); // Bu listeye elemanı eklemiyor
+            wordList.add(mWord);
 
         }
 
-        Log.e("WordList","size"+wordList.size());
-
-
+        Log.e("WordList", "size" + wordList.size());
 
 
         vocabularyListR = (RecyclerView) findViewById(R.id.vocabularyListRecycler);
-        adapter = new VocabularyListAdapter(this,wordList);
-
-        new ItemTouchHelper(itemTouchHelperCallback).attachToRecyclerView(vocabularyListR);
+        adapter = new VocabularyListAdapter(this, wordList);
 
         vocabularyListR.setAdapter(adapter);
         vocabularyListR.setLayoutManager(new LinearLayoutManager(this));
+
+      //  new ItemTouchHelper(itemTouchHelperCallback).attachToRecyclerView(vocabularyListR);
+        initSwipeHelper();
+
 
 
 
@@ -127,10 +131,68 @@ public class MyWordListActivity extends AppCompatActivity {
 
 
 
+ public void initSwipeHelper() {
+     SwipeHelper swipeHelper = new SwipeHelper(this, vocabularyListR, 200) {
+         @Override
+         public void instantiateMyButton(final RecyclerView.ViewHolder viewHolder, List<SwipeHelper.MyButton> buffer) {
+
+             buffer.add(new MyButton(MyWordListActivity.this,
+                     "Delete",
+                     35,
+                     R.drawable.ic_delete,
+                     Color.TRANSPARENT,
+                     new MyButtonClickListener() {
+                         @Override
+                         public void onClick(int pos) {
+                             position = viewHolder.getAdapterPosition();
+                             Log.e("onSwiped:  ", " " + position);
+                             deletedWord = wordList.get(position);
+
+
+                             wordList.remove(position);
+                          //   adapter.notifyDataSetChanged();
+                             adapter.notifyItemRemoved(position);
+
+
+                             showSnackbar(deletedWord.getId());
+
+                             Log.i("onclick:delete", Integer.toString(position));
+
+                         }
+                     }));
+             buffer.add(new MyButton(MyWordListActivity.this,
+                     "Edit",
+                     35,
+                     R.drawable.ic_edit,
+                     Color.TRANSPARENT,
+                     new MyButtonClickListener() {
+                         @Override
+                         public void onClick(int pos) {
+                             position = viewHolder.getAdapterPosition();
+                            Intent intent = new Intent(MyWordListActivity.this, UpdateActivity.class);
+                             intent.putExtra("id" , wordList.get(position).getId());
+                             intent.putExtra("word" , wordList.get(position).getWord());
+                             intent.putExtra("synonym" , wordList.get(position).getSynonym());
+                             intent.putExtra("definition" , wordList.get(position).getDefinition());
+                             intent.putExtra("example" , wordList.get(position).getExample());
+
+                             startActivity(intent);
+
+                         }
+                     }));
 
 
 
-    ItemTouchHelper.SimpleCallback itemTouchHelperCallback = new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.RIGHT ) {
+         }
+
+     };
+
+
+    }
+
+
+/*
+    ItemTouchHelper.SimpleCallback itemTouchHelperCallback = new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.RIGHT) {
         @Override
         public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
             return false;
@@ -139,7 +201,7 @@ public class MyWordListActivity extends AppCompatActivity {
         @Override
         public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
             position = viewHolder.getAdapterPosition();
-            Log.e( "onSwiped:  "," "+ position );
+            Log.e("onSwiped:  ", " " + position);
             deletedWord = wordList.get(position);
 
 
@@ -152,6 +214,11 @@ public class MyWordListActivity extends AppCompatActivity {
 
         }
     };
+
+*/
+
+
+
 
     public void showSnackbar(final long id) {
         Snackbar snackbar = Snackbar.make(coordinatorLayout, "Item Deleted.", Snackbar.LENGTH_SHORT)

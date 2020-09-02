@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Cards Vocabulary</string>
+
+    <string name="settings_amp_about"><![CDATA[Ayarlar & Lisanslar]]></string>
+    <string name="change_the_language">Seçilen dili değiştir</string>
+    <string name="language">Dil</string>
+    <string name="english">Ingilizce</string>
+    <string name="turkish">Türkçe</string>
+    <string name="licenses">Lisanslar</string>
+    <string name="share">Paylaş</string>
+    <string name="sharevia">Ile paylaş</string>
+    <string name="content">Cards Vocabulary Kelime öğrenme ve kelime listeni oluşturma uygulaması.</string>
+
+    <string name="rateus">Uygulamayı Oyla!</string>
+    <string name="aboutTheApp">Uygulama Hakkında Bilgi</string>
+
+    <string name="aboutText">Cards Vocabulary ingilizce öğrenenler için tasarlanmış, kelime öğrenmeyi eğlenceli bir hale getirmek ve not almayı kolaylaştırmayı amaçlayan bir
+    uygulamadır.
+
+    Uygulamanın bütün kodlama ve tasarımları tarafımdan yapılmıştır.</string>
+
+</resources>

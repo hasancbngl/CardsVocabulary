@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">Cards Vocabulary</string>
     <string name="g_n">Gün</string>
     <string name="ba_la">Başla!!</string>
@@ -28,13 +28,43 @@
     <string name="icon_by_freepik_from">Icon by freepik from</string>
     <string name="flaticon">flaticon</string>
 
-    <string name="admob_app_id"> ca-app-pub-6921015378294794~3832315170</string>
+    <string name="share">Share</string>
 
+    <string name="aboutTheApp">About The App</string>
+
+    <string name="rateus">Rate Us</string>
+
+    <string name="sharevia">Share via</string>
+
+    <string name="admob_app_id"> ca-app-pub-6921015378294794~3832315170</string>
 
 
     <string name="banner_id">ca-app-pub-6921015378294794/3389639651</string>
 
     <string name="interstitial_id">ca-app-pub-6921015378294794/1501842916</string>
+
+
+    <string name="rate_dialog_title">Rate this app</string>
+    <string name="rate_dialog_message">If you enjoy using this app, would you mind taking a moment to rate it? It won\'t take more than a minute. Thanks for your support!</string>
+    <string name="rate_dialog_ok">Rate It Now</string>
+    <string name="rate_dialog_cancel" translatable="false">Remind Me Later</string>
+    <string name="rate_dialog_no" translatable="false">No, Thanks</string>
+
+    <string name="settings_amp_about"><![CDATA[Settings & Licenses]]></string>
+
+    <string name="content">Cards Vocabulary is Vocabulary learning and builder app.</string>
+
+
+    <string name="aboutText">Cards Vocabulary app is designed for English learners, it aims to make vocabulary learning easier, and to practise, also to take notes easier.
+
+    All the app codes and desings has been created by me.</string>
+    <string name="kelime_listeme_ekle">Kelime Listeme Ekle</string>
+    <string name="english_learning_app">English Learning App</string>
+    <string name="select_the_language">Select The Language</string>
+    <string name="e_anlaml_kelimeler">Eş Anlamlı Kelimeler</string>
+    <string name="quiz">Quiz</string>
+    <string name="her_g_n_10_kelime">Her gün 10 kelime</string>
+    <string name="find_the_word">Find The Word in English</string>
 
 
 </resources>

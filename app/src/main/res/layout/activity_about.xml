@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/gradient_5"
+    tools:context=".aboutActivity">
+
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginHorizontal="@dimen/dp20"
+        android:layout_marginTop="@dimen/dp70"
+        app:cardBackgroundColor="#00000000">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/imageviewCard"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/dp80"
+                android:src="@drawable/ic_cards" />
+
+            <TextView
+                android:id="@+id/ttview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/imageviewCard"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/dp8"
+                android:text="Cards Vocabulary"
+                android:textSize="@dimen/sp18"
+                android:textStyle="bold"
+                android:textColor="#000"/>
+
+            <View
+                android:id="@+id/divider14"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_below="@id/ttview"
+                android:layout_marginTop="@dimen/dp8"
+                android:background="#000" />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/divider14"
+                android:layout_marginTop="@dimen/dp20"
+                android:layout_marginEnd="@dimen/dp4"
+                android:layout_marginRight="@dimen/dp4"
+                android:gravity="center_horizontal"
+                android:text="@string/aboutText"
+                android:textColor="#000"
+                android:textSize="@dimen/sp15"
+                android:textStyle="italic" />
+
+
+        </RelativeLayout>
+
+
+    </androidx.cardview.widget.CardView>
+
+
+
+
+</RelativeLayout>

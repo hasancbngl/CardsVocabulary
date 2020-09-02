@@ -5,13 +5,19 @@ import androidx.cardview.widget.CardView;
 
 import android.app.AlarmManager;
 import android.app.PendingIntent;
+import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
+import android.text.Html;
+import android.text.method.LinkMovementMethod;
+import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
+
 
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
@@ -20,8 +26,10 @@ import com.google.android.material.card.MaterialCardView;
 
 public class MySettings extends AppCompatActivity {
 
+    private static final String TAG = "MySettings";
 
     SharedPreferences langPreferences;
+    Button rateMeButton;
 
     public void langTurkishClick(View view) {
 
@@ -41,6 +49,7 @@ public class MySettings extends AppCompatActivity {
 
        // System.exit(0); //close the app
 
+
     }
 
 
@@ -59,6 +68,8 @@ public class MySettings extends AppCompatActivity {
         alarmManager.set(AlarmManager.RTC,System.currentTimeMillis() + 0, pendingIntent);
 
         //System.exit(0); //close the app
+
+
 
 
     }
@@ -84,6 +95,19 @@ public class MySettings extends AppCompatActivity {
 
     }
 
+    public void emailClicked(View view) {
+
+       Intent email = new Intent(Intent.ACTION_SEND);
+        email.putExtra(Intent.EXTRA_EMAIL, new String[]{ "hasancobaaan@gmail.com"});
+      //  email.putExtra(Intent.EXTRA_SUBJECT, subject);
+       // email.putExtra(Intent.EXTRA_TEXT, message);
+
+//need this to prompt`enter code here`s email client only
+        email.setType("message/rfc822");
+
+        startActivity(Intent.createChooser(email, "Choose an Email client :"));
+    }
+
 
 
 
@@ -93,7 +117,6 @@ public class MySettings extends AppCompatActivity {
         setContentView(R.layout.activity_my_settings);
 
 
-
         getSupportActionBar().setTitle("Settings");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
@@ -101,6 +124,32 @@ public class MySettings extends AppCompatActivity {
 
 
         loadBanner(this);
+
+
+        rateMeButton = (Button) findViewById(R.id.rateMeButton);
+
+        rateMeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                try {
+                    startActivity(new Intent(Intent.ACTION_VIEW,
+                            Uri.parse("market://details?id=com.cobanogluhasan.inguplift")));
+                }
+                catch (ActivityNotFoundException e) {
+
+                    Log.i(TAG, "onClick: "+ "not found");
+
+                    startActivity(new Intent(Intent.ACTION_VIEW,
+                            Uri.parse("https://play.google.com/store/apps/details?id=com.cobanogluhasan.inguplift")));
+                }
+
+
+            }
+        });
+
+
+
 
 
     }
